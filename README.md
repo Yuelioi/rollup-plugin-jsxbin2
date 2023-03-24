@@ -24,3 +24,19 @@ export default {
   ]
 }
 ```
+
+## Dependencies
+
+if don't install `jsxbin`, (jsxbin file not in node_modules/.bin folder)
+
+```shell
+yarn add jsxbin -D
+// or
+npm i jsxbin -D
+// or
+pnpm i jsxbin -D
+```
+
+## TODO
+
+multi files?
