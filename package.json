@@ -1,6 +1,6 @@
 {
     "name": "rollup-plugin-jsxbin2",
-    "version": "1.0.0",
+    "version": "1.0.2",
     "publishConfig": {
         "access": "public"
     },
@@ -11,8 +11,8 @@
         "url": "rollup/plugins"
     },
     "author": "yueli",
-    "homepage": "https://github.com/rollup/plugins/tree/master/packages/json#readme",
-    "bugs": "https://github.com/rollup/plugins/issues",
+    "homepage": "https://github.com/Yuelioi/rollup-plugin-jsxbin2#readme",
+    "bugs": "https://github.com/Yuelioi/rollup-plugin-jsxbin2/issues",
     "main": "./dist/cjs/index.js",
     "module": "./dist/es/index.js",
     "exports": {
@@ -38,7 +38,7 @@
         "jsxbin"
     ],
     "peerDependencies": {
-        "rollup": "^1.20.0||^2.0.0||^3.0.0"
+        "rollup": "^2.0.0||^3.0.0"
     },
     "peerDependenciesMeta": {
         "rollup": {
