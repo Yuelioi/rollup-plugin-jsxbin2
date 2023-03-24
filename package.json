@@ -1,0 +1,53 @@
+{
+    "name": "rollup-plugin-jsxbin2",
+    "version": "1.0.0",
+    "publishConfig": {
+        "access": "public"
+    },
+    "description": "Plugin for rollup with covert jsx file to jsxbin(new)",
+    "license": "ISC",
+    "repository": {
+        "type": "git",
+        "url": "rollup/plugins"
+    },
+    "author": "yueli",
+    "homepage": "https://github.com/rollup/plugins/tree/master/packages/json#readme",
+    "bugs": "https://github.com/rollup/plugins/issues",
+    "main": "./dist/cjs/index.js",
+    "module": "./dist/es/index.js",
+    "exports": {
+        "types": "./types/index.d.ts",
+        "import": "./dist/es/index.js",
+        "default": "./dist/cjs/index.js"
+    },
+    "engines": {
+        "node": ">=14.0.0"
+    },
+    "scripts": {},
+    "files": [
+        "dist",
+        "!dist/**/*.map",
+        "types",
+        "README.md",
+        "LICENSE"
+    ],
+    "keywords": [
+        "rollup",
+        "plugin",
+        "npm",
+        "jsxbin"
+    ],
+    "peerDependencies": {
+        "rollup": "^1.20.0||^2.0.0||^3.0.0"
+    },
+    "peerDependenciesMeta": {
+        "rollup": {
+            "optional": true
+        }
+    },
+    "dependencies": {},
+    "devDependencies": {
+        "rollup": "^3.2.3",
+        "jsxbin": "^2.2.0"
+    }
+}
