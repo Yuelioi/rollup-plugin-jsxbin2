@@ -1,6 +1,6 @@
 # rollup-plugin-jsxbin2
 
-Plugin for rollup with covert jsx file to jsxbin(new)
+Plugin for rollup with covert jsx file to jsxbin(es support)
 
 ## Installation
 
