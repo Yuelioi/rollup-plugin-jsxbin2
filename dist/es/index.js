@@ -1,17 +1,30 @@
-import { spawn } from 'child_process';
-import { exec } from 'child_process';
+import { spawn, exec } from 'child_process';
 import fs from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
 
 export default function jsxbin2(options = {}) {
-    const { file } = options;
+    const { file, jsxbin } = options;
 
     return {
         name: 'rollup-plugin-jsxbin2',
-        version: '0.0.1',
+        version: '0.0.7',
         async generateBundle(outputOptions, bundle) {
-            const output = file.replace('.jsx', '.jsxbin');
-            const cmd = `jsxbin -i ${file} -o ${output}`;
+
+            const output = file.replace(".jsx", ".jsxbin");
+            var jsxbinPath;
+            if (jsxbin) {
+                jsxbinPath = "jsxbin"
+            } else {
+                const pluginPath = fileURLToPath(import.meta.url);
+                const absolutePath = path.resolve(pluginPath);
+                const projectPathRegex = /(.+?node_modules\\)/;
+                const match = absolutePath.match(projectPathRegex);
+                jsxbinPath = match ? match[1] : '';
+                jsxbinPath = `${jsxbinPath}/.bin/jsxbin`
+            }
+
+            const cmd = `${jsxbinPath} -i ${file} -o ${output}`;
 
             await new Promise((resolve, reject) => {
                 exec(cmd, (error, stdout, stderr) => {
