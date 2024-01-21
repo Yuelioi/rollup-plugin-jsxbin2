@@ -1,6 +1,6 @@
 {
     "name": "rollup-plugin-jsxbin2",
-    "version": "1.0.9",
+    "version": "1.0.10",
     "publishConfig": {
         "access": "public"
     },
@@ -41,7 +41,7 @@
     ],
     "peerDependencies": {
         "jsxbin": "^2.2.0",
-        "rollup": "^2.0.0||^3.0.0"
+        "rollup": "^2.0.0||^3.0.0||^4.0.0"
     },
     "peerDependenciesMeta": {
         "rollup": {
@@ -49,7 +49,7 @@
         }
     },
     "devDependencies": {
-        "jsxbin": "^2.2.0",
-        "rollup": "^3.2.3"
+        "jsxbin": "^2.0.0",
+        "rollup": "^2.0.0||^3.0.0||^4.0.0"
     }
 }
