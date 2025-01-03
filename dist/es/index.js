@@ -1,47 +1,30 @@
-import { spawn, exec } from "child_process";
-import fs from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
-
-export default function jsxbin2(options = {}) {
-    const { file, jsxbin } = options;
-
-    return {
-        name: "rollup-plugin-jsxbin2",
-        version: "1.0.9",
-        async generateBundle(outputOptions, bundle) {
-            const output = file.replace(".jsx", ".jsxbin");
-            var jsxbinPath;
-            if (jsxbin) {
-                jsxbinPath = jsxbin;
-            } else {
-                const pluginPath = fileURLToPath(import.meta.url);
-                const absolutePath = path.resolve(pluginPath);
-                const projectPathRegex = /(.+?node_modules\\)/;
-                const match = absolutePath.match(projectPathRegex);
-                const node_modules_path = match ? match[1] : "";
-                jsxbinPath = `${node_modules_path}/.bin/jsxbin`;
-            }
-
-            const cmd = `"${jsxbinPath}" -i "${file}" -o "${output}"`;
-
-            await new Promise((resolve, reject) => {
-                exec(cmd, (error, stdout, stderr) => {
-                    if (error) {
-                        console.error(`执行命令失败: ${error}`);
-                        reject(error);
-                        return;
-                    }
-                    if (stderr) {
-                        console.error(`stderr: ${stderr}`);
-                        reject(stderr);
-                        return;
-                    }
-                    resolve(stdout);
-                });
-            });
-            const source = fs.readFileSync(output);
-            this.emitFile({ type: "asset", fileName: path.parse(output).base, source: source });
-        },
-    };
+import { exec as e } from "child_process";
+import o from "fs";
+import r from "path";
+import { fileURLToPath as s } from "url";
+function i(i) {
+  const { input: t, jsxbin: n } = i;
+  return {
+    name: "rollup-plugin-jsxbin2",
+    version: "1.1.0",
+    async generateBundle(i, l) {
+      const a = t.replace(".jsx", ".jsxbin");
+      let m;
+      if (n) m = n;
+      else {
+        const e = s(import.meta.url),
+          o = /(.+?node_modules\\)/,
+          i = r.resolve(e).match(o);
+        m = `${i ? i[1] : ""}/.bin/jsxbin`;
+      }
+      const c = `"${m}" -i "${t}" -o "${a}"`;
+      await new Promise((o, r) => {
+        e(c, (e, s, i) => (e ? (console.error(`执行命令失败: ${e}`), void r(e)) : i ? (console.error(`stderr: ${i}`), void r(i)) : void o(s)));
+      });
+      const p = o.readFileSync(a);
+      this.emitFile({ type: "asset", fileName: r.parse(a).base, source: p });
+    },
+  };
 }
+export { i as default };
+//# sourceMappingURL=index.js.map
